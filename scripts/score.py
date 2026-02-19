@@ -103,7 +103,7 @@ def build_report(rows, percent, recommendation_text, generated_at):
             "|-------------|-------|---------|",
         ])
         for r in red:
-            comment_esc = (r["comment"] or "").replace("|", "\\|")
+            comment_esc = (r["comment"] or "").replace("|", "\\|").replace("\n", " ")
             lines.append(f"| {r['question_id']} | {r['score']} | {comment_esc} |")
         lines.extend(["", ""])
 
@@ -117,7 +117,7 @@ def build_report(rows, percent, recommendation_text, generated_at):
             "|-------------|-------|---------|",
         ])
         for r in amber:
-            comment_esc = (r["comment"] or "").replace("|", "\\|")
+            comment_esc = (r["comment"] or "").replace("|", "\\|").replace("\n", " ")
             lines.append(f"| {r['question_id']} | {r['score']} | {comment_esc} |")
         lines.extend(["", ""])
 
@@ -131,7 +131,7 @@ def build_report(rows, percent, recommendation_text, generated_at):
         app = "yes" if r["is_applicable"] else "no"
         score_str = str(r["score"]) if r["score"] is not None else ""
         z = zone(r["score"])
-        comment_esc = (r["comment"] or "").replace("|", "\\|")
+        comment_esc = (r["comment"] or "").replace("|", "\\|").replace("\n", " ")
         lines.append(f"| {r['question_id']} | {app} | {score_str} | {z} | {comment_esc} |")
     lines.append("")
 
@@ -145,7 +145,7 @@ def build_report(rows, percent, recommendation_text, generated_at):
             "|-------------|--------|",
         ])
         for r in na:
-            comment_esc = (r["comment"] or "").replace("|", "\\|")
+            comment_esc = (r["comment"] or "").replace("|", "\\|").replace("\n", " ")
             lines.append(f"| {r['question_id']} | {comment_esc} |")
         lines.append("")
 
