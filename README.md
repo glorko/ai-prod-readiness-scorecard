@@ -37,7 +37,7 @@ If you're a vibecoder: this gives you a checklist and a way to show you've thoug
 
 3. **Review the report**
    Open the generated `*-report.md`. It includes:
-   - Overall score (%) and recommendation (ready / ready with risks / hire a programmer).
+   - Overall score (%) and recommendation: short estimate (fine / okay / needs work) plus tangible next steps (e.g. fix Red/Amber, hire an engineer).
    - **Red zone** (score &lt; 4): items that need immediate attention.
    - **Amber zone** (score 4–7): items to review and improve.
    - A full table of all items with a Zone column, and a “Not applicable” section.
@@ -56,4 +56,4 @@ Then open `examples/sample-assessment-report.md`.
 - **[scripts/list_questions.py](scripts/list_questions.py)** — Outputs all question IDs from `questionnaire/*.md` (source of truth for the assessment; prompt uses this, not a hardcoded list).
 - **[REQUIREMENTS.md](REQUIREMENTS.md)** — Full requirements and scoring rules.
 
-Scoring: percentage = (sum of applicable scores) / (count × 10) × 100. Thresholds: &gt;80% ready for production; 50–80% ready with risks; &lt;50% recommend hiring a programmer.
+Scoring: percentage = (sum of applicable scores) / (count × 10) × 100. Recommendations: estimate (ready / fine / okay / needs work) plus tangible actions (e.g. light review, fix Red/Amber, hire an engineer).

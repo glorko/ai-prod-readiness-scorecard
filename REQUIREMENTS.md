@@ -240,9 +240,12 @@ Each question in the questionnaire must include the plain-language block (What /
 
 | Score | Recommendation |
 |-------|-----------------|
-| **>80%** | Ready for production |
-| **50–80%** | Ready with risks — recommended to read output and consider improvements |
-| **<50%** | Recommend hiring a programmer before production |
+Recommendation bands use **20% steps** (80, 60, 40). Recommendations are tangible and actionable:
+
+| **≥80%** | Ready for production — you're in great shape. Consider a lightweight review (e.g. security or load test) before scaling. |
+| **60–80%** | App is fine. Fix Red items and plan improvements for Amber; consider an engineer or consultant for weak areas. |
+| **40–60%** | App is okay to run. Address Red items before production; consider hiring an engineer or a consultant to close gaps. |
+| **<40%** | App needs work. Recommend hiring an engineer (or technical co-founder) before production; use the report to prioritise work. |
 
 ---
 

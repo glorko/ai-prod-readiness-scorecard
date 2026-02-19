@@ -14,8 +14,10 @@ ZONE_AMBER = "Amber"  # 4 <= score < 8
 ZONE_OK = "OK"        # score >= 8
 ZONE_NA = "N/A"
 
-THRESHOLD_HIGH = 80
-THRESHOLD_LOW = 50
+# Recommendation bands: 20% steps (80, 60, 40)
+THRESHOLD_HIGH = 80   # ≥80%
+THRESHOLD_MID = 60    # 60–80%
+THRESHOLD_LOW = 40    # 40–60% vs <40%
 
 
 def parse_csv(path):
@@ -70,10 +72,12 @@ def compute_score(rows):
 
 def recommendation(percent):
     if percent >= THRESHOLD_HIGH:
-        return "Ready for production"
+        return "Ready for production — you're in great shape. Consider a lightweight review (e.g. security or load test) before scaling."
+    if percent >= THRESHOLD_MID:
+        return "App is fine. Fix Red items and plan improvements for Amber; consider an engineer or consultant for weak areas."
     if percent >= THRESHOLD_LOW:
-        return "Ready with risks — read report and consider improvements"
-    return "Recommend hiring a programmer before production"
+        return "App is okay to run. Address Red items before production; consider hiring an engineer or a consultant to close gaps."
+    return "App needs work. Recommend hiring an engineer (or technical co-founder) before production; use the report to prioritise work."
 
 
 def build_report(rows, percent, recommendation_text, generated_at):
